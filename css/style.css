@@ -129,7 +129,8 @@ input:focus { outline: 2px solid var(--gold); }
 .pile .stack .under { transform: rotate(-6deg) translateX(calc(var(--card-w) * -0.08)); opacity: 0.9; }
 .pile .stack .card.arrive { animation: arrive 0.3s ease-out; }
 @keyframes arrive { from { translate: 0 60px; opacity: 0; } }
-.banner { position: absolute; top: 0; left: 50%; transform: translateX(-50%); z-index: 5; text-align: center; padding: 7px 16px; border-radius: 18px; box-shadow: 0 3px 8px #0007; display: flex; flex-direction: column; gap: 2px; animation: pop 0.3s ease-out; white-space: nowrap; }
+.banner { position: absolute; top: 0; left: 50%; transform: translateX(-50%); z-index: 5; text-align: center; padding: 7px 16px; border-radius: 18px; box-shadow: 0 3px 8px #0007; display: flex; flex-direction: column; gap: 2px; white-space: nowrap; }
+.banner.fresh { animation: pop 0.3s ease-out; }
 .banner.mine { background: var(--mine); }
 .banner.theirs { background: var(--theirs); }
 .banner.neutral { background: #4d4d4d; }

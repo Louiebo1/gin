@@ -121,6 +121,7 @@ const ui = {
   knocking: false,       // Knock mode: the next card thrown is face down to knock.
   hint: null, hintCard: null,
   banner: null,          // { title, detail, player, big, until }
+  bannerShown: null,     // The banner last drawn: it pops in only the first time.
   holdResultUntil: 0,
   guess: null,           // Online guest: my move shown before the host confirms it.
   prev: null,            // The last game drawn (a copy), to see what changed.
@@ -556,7 +557,10 @@ function scoreChip(seat, g) {
 
 function bannerEl(b) {
   const color = b.player === null || b.player === undefined ? 'neutral' : b.player === ui.me ? 'mine' : 'theirs';
-  return el('div', `banner ${color}${b.big ? ' big' : ''}`, `<b>${b.title}</b>${b.detail ? `<small>${b.detail}</small>` : ''}`);
+  // Pops in the first time it's drawn only; later redraws leave it still.
+  const fresh = ui.bannerShown !== b.id;
+  ui.bannerShown = b.id;
+  return el('div', `banner ${color}${b.big ? ' big' : ''}${fresh ? ' fresh' : ''}`, `<b>${b.title}</b>${b.detail ? `<small>${b.detail}</small>` : ''}`);
 }
 
 function statusText(g) {
