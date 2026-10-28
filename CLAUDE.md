@@ -56,3 +56,11 @@ computer, or a friend anywhere with a 4-letter code. Built like `~/code/cribbage
 ## Deploy
 GitHub Pages from `main` (repo Louiebo1/gin, public) → https://louiebo1.github.io/gin/.
 `git push`; Pages rebuilds in about a minute. GitHub CLI: `~/bin/gh` (logged in as Louiebo1).
+
+## Google sign-in (2026-10-28)
+`js/account.js` is a copy of `~/code/cardgames-home/shared/account.js` — the same file in
+every game; change it there and copy it to all of them. It owns the Firebase connection
+(`online.js` gets the id from `playerId()`): anonymous unless the person signed in with
+Google (the button on the start screen, `accountLobby()`; Sign Out in Settings). Signed in, the name and statistics live at
+`/users/UID` (`name`, `email`, `games/<game id>`), private to that person; `main.js` calls
+`syncGame(...)` at startup, `pushName` in `saveSettings`, `pushStats` when stats are saved.
